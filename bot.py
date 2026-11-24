@@ -92,16 +92,18 @@ class DigestRunner:
             await self._notify("Не удалось отправить дайджест. Подробности в журнале.")
 
     def _build_messages(self) -> list[str]:
-        now = datetime.now(UTC)
         articles = collect_articles(
-            self.storage, self.settings.sources, dedup_days=self.settings.dedup_days, now=now
+            self.storage,
+            self.settings.sources,
+            dedup_days=self.settings.dedup_days,
+            now=datetime.now(UTC),
         )
         return render_digest(
             articles,
             source_weights={source.name: source.weight for source in self.settings.sources},
             max_items=self.settings.max_items,
             top_items=self.settings.top_items,
-            now=now,
+            now=datetime.now(self.settings.timezone),
             translation_url=self.settings.translation_url,
             translation_api_key=self.settings.translation_api_key,
         )

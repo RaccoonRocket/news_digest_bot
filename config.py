@@ -15,6 +15,7 @@ from aiogram.utils.token import TokenValidationError, validate_token
 from dotenv import dotenv_values
 
 from collector import SourceConfig
+from digest import DEFAULT_MAX_ITEMS
 
 
 _PROJECT_DIR = Path(__file__).resolve().parent
@@ -94,7 +95,7 @@ def load_settings(project_dir: Path = _PROJECT_DIR) -> Settings:
         log_level=log_level,
         send_time=_parse_time(values.get("send_time", "21:00")),
         sources=_parse_sources(values.get("sources")),
-        max_items=_integer(values, "max_items", default=20, minimum=1),
+        max_items=_integer(values, "max_items", default=DEFAULT_MAX_ITEMS, minimum=1),
         top_items=_integer(values, "top_items", default=5, minimum=0),
         retention_days=_integer(values, "retention_days", default=30, minimum=1),
         dedup_days=_integer(values, "dedup_days", default=60, minimum=1),
