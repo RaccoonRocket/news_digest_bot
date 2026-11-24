@@ -1,0 +1,20 @@
+send_time: "21:00"
+max_items: 20
+top_items: 5
+retention_days: 30
+dedup_days: 60
+language: ru
+# Публичный экземпляр LibreTranslate для перевода заголовков и лидов.
+translation_url: "https://translate.tedomum.fr/translate"
+
+sources:
+  - name: Интерфакс
+    rss_url: "https://www.interfax.ru/rss"
+    weight: 1.0
+
+  - name: Reuters
+    # Публичная лента Reuters World от QuanwenRSS.
+    # Проверить при запуске доступность обеих лент с целевой машины.
+    rss_url: "https://feed.quanwenrss.com/feed/reuters-world.xml"
+    fallback_rss_url: "https://news.google.com/rss/search?q=when%3A24h+site%3Areuters.com&hl=en-US&gl=US&ceid=US%3Aen"
+    weight: 1.0

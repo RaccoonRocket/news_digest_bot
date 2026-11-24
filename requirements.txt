@@ -1,0 +1,6 @@
+aiogram>=3.26,<4
+APScheduler>=3.11.2,<4
+feedparser>=6.0.12,<7
+python-dotenv>=1.2.2,<2
+PyYAML>=6.0.3,<7
+tzdata>=2025.2
